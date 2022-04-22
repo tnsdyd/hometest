@@ -24,6 +24,7 @@ pipeline {
         sh '''
         sudo kubectl set image deploy deploy-main ctn-main=mm0820/hometest:newmain
         sudo kubectl set image deploy deploy-main ctn-main=mm0820/hometest:newmain
+	'''
       }
     }
   }
