@@ -9,11 +9,10 @@ pipeline {
     stage('docker build and push') {
       steps {
         sh '''
-        echo "test" >> index.html
+        echo 'test' >> index.html
         sudo docker build -t mm0820/hometest:newmain . 
-        sudo docker push mm0820/hometest:newmain
-        
-        echo "test12322" >> index.html
+        sudo docker push mm0820/hometest:newmain 
+        echo 'test12322' >> index.html
         sudo docker build -t mm0820/hometest:newblog . 
         sudo docker push mm0820/hometest:newblog
         '''
@@ -23,7 +22,7 @@ pipeline {
       steps {
         sh '''
         sudo kubectl set image deploy deploy-main ctn-main=mm0820/hometest:newmain
-        sudo kubectl set image deploy deploy-main ctn-main=mm0820/hometest:newmain
+        sudo kubectl set image deploy deploy-blog ctn-blog=mm0820/hometest:newblog
 	'''
       }
     }
